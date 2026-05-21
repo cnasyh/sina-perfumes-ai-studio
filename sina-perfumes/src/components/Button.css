@@ -1,0 +1,89 @@
+/* src/components/Button.css */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-pill);
+  transition:
+    transform var(--dur-med) var(--ease-luxury),
+    box-shadow var(--dur-med) var(--ease-luxury),
+    background var(--dur-med) var(--ease-luxury),
+    color var(--dur-med) var(--ease-luxury);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+
+.btn:hover::after { opacity: 1; }
+
+.btn:active { transform: scale(0.97); }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Primary ─────────────────────────────────────────────── */
+.btn--primary {
+  background: var(--gold);
+  color: var(--cream);
+  box-shadow: 0 2px 16px rgba(184, 146, 58, 0.3);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--gold-light);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+/* ── Secondary ───────────────────────────────────────────── */
+.btn--secondary {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: var(--gold-pale);
+  transform: translateY(-2px);
+}
+
+/* ── Ghost ───────────────────────────────────────────────── */
+.btn--ghost {
+  background: transparent;
+  color: var(--charcoal);
+  border: 1px solid var(--mist);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── Full Width ──────────────────────────────────────────── */
+.btn--full { width: 100%; }
+
+/* ── Inner Shimmer ───────────────────────────────────────── */
+.btn__inner {
+  position: relative;
+  z-index: 1;
+}

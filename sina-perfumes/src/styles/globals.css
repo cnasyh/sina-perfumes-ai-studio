@@ -1,0 +1,181 @@
+/* ============================================================
+   SINA PERFUMES AI STUDIO — Global Styles & Design Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  /* Core Palette */
+  --cream:        #F7F3EE;
+  --cream-dark:   #EDE5D8;
+  --gold:         #B8923A;
+  --gold-light:   #D4AF6A;
+  --gold-pale:    #F0E2C0;
+  --black:        #0D0B09;
+  --charcoal:     #1C1814;
+  --warm-brown:   #3D2B1F;
+  --blush:        #E8C8BB;
+  --blush-deep:   #C9937A;
+  --mist:         #D6CEC5;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-sans:    'Jost', sans-serif;
+
+  /* Spacing Scale */
+  --sp-xs:  0.5rem;
+  --sp-sm:  1rem;
+  --sp-md:  2rem;
+  --sp-lg:  4rem;
+  --sp-xl:  8rem;
+
+  /* Transitions */
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-reveal:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:  200ms;
+  --dur-med:   500ms;
+  --dur-slow:  900ms;
+
+  /* Shadows */
+  --shadow-card:  0 8px 40px rgba(13, 11, 9, 0.12);
+  --shadow-hover: 0 20px 60px rgba(13, 11, 9, 0.22);
+  --shadow-gold:  0 4px 24px rgba(184, 146, 58, 0.28);
+
+  /* Border Radius */
+  --radius-sm:  4px;
+  --radius-md:  12px;
+  --radius-lg:  24px;
+  --radius-pill: 999px;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-dark); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: var(--radius-pill); }
+
+/* ── Selection ───────────────────────────────────────────── */
+::selection {
+  background: var(--gold-pale);
+  color: var(--warm-brown);
+}
+
+/* ── Typography Helpers ──────────────────────────────────── */
+.display-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.serif-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+.label-text {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ── Utility ─────────────────────────────────────────────── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Page Transition ─────────────────────────────────────── */
+.page-enter {
+  animation: fadeUp var(--dur-slow) var(--ease-reveal) both;
+}
+
+/* ── Gold Divider ────────────────────────────────────────── */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  color: var(--gold);
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ── Grain Overlay ───────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}

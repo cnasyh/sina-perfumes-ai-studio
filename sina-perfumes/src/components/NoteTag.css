@@ -1,0 +1,31 @@
+/* src/components/NoteTag.css */
+
+.note-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.note-tag--top {
+  background: rgba(212, 175, 106, 0.1);
+  border-color: var(--gold-light);
+  color: var(--warm-brown);
+}
+
+.note-tag--heart {
+  background: rgba(232, 200, 187, 0.2);
+  border-color: var(--blush-deep);
+  color: var(--blush-deep);
+}
+
+.note-tag--base {
+  background: rgba(61, 43, 31, 0.08);
+  border-color: var(--warm-brown);
+  color: var(--warm-brown);
+}

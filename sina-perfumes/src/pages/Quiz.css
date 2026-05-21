@@ -1,0 +1,216 @@
+/* src/pages/Quiz.css */
+
+.quiz {
+  min-height: 100dvh;
+  background: var(--cream);
+  padding-top: 80px;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────── */
+.quiz__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--cream-dark);
+  z-index: 150;
+}
+
+.quiz__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--blush-deep));
+  transition: width 0.6s var(--ease-luxury);
+}
+
+/* ── Name Screen ─────────────────────────────────────────── */
+.quiz__name-screen {
+  min-height: calc(100dvh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.quiz__name-inner {
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.quiz__overline {
+  color: var(--gold);
+}
+
+.quiz__name-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+.quiz__name-title em { color: var(--gold); }
+
+.quiz__name-sub {
+  color: var(--warm-brown);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+.quiz__name-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz__input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--charcoal);
+  background: var(--cream);
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-md);
+  outline: none;
+  text-align: center;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.quiz__input::placeholder {
+  color: var(--mist);
+  font-style: italic;
+}
+
+.quiz__input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 146, 58, 0.12);
+}
+
+.quiz__error {
+  font-size: 0.8rem;
+  color: var(--blush-deep);
+  font-style: italic;
+}
+
+/* ── Question Screen ─────────────────────────────────────── */
+.quiz__container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.quiz__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz__back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--warm-brown);
+  opacity: 0.6;
+  padding: 0.5rem 0;
+  transition: opacity var(--dur-fast);
+}
+
+.quiz__back-btn:hover { opacity: 1; }
+
+.quiz__step-count { color: var(--gold); }
+
+/* ── Question Area ────────────────────────────────────────── */
+.quiz__question-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quiz__category { color: var(--gold); }
+
+.quiz__question {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+/* ── Options ──────────────────────────────────────────────── */
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quiz__option {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--mist);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast),
+    transform var(--dur-fast),
+    background var(--dur-fast);
+  width: 100%;
+}
+
+.quiz__option:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(184, 146, 58, 0.12);
+  transform: translateX(4px);
+}
+
+.quiz__option--selected {
+  background: var(--gold-pale);
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(184, 146, 58, 0.2);
+}
+
+.quiz__option-emoji {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.quiz__option-label {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--charcoal);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.quiz__option-arrow {
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity var(--dur-fast), transform var(--dur-fast);
+  transform: translateX(-4px);
+}
+
+.quiz__option:hover .quiz__option-arrow,
+.quiz__option--selected .quiz__option-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 600px) {
+  .quiz__container { padding: 2rem 1.25rem 3rem; }
+  .quiz__option { gap: 0.75rem; padding: 1rem 1.25rem; }
+}

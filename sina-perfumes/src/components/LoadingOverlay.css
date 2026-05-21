@@ -1,0 +1,93 @@
+/* src/components/LoadingOverlay.css */
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(247, 243, 238, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fadeIn var(--dur-med) var(--ease-luxury);
+}
+
+.loading-overlay__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── Animated Flask ──────────────────────────────────────── */
+.loading-overlay__flask {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-pale), var(--blush));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 0 rgba(184, 146, 58, 0.4);
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(184, 146, 58, 0.5); }
+  70%  { box-shadow: 0 0 0 24px rgba(184, 146, 58, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 146, 58, 0); }
+}
+
+.loading-overlay__bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.6;
+  animation: floatBubble 2.4s ease-in-out infinite;
+}
+
+.loading-overlay__bubble { width: 10px; height: 10px; top: 10px; left: 12px; }
+.loading-overlay__bubble--2 {
+  width: 7px; height: 7px; top: 18px; left: 34px;
+  animation-delay: 0.6s;
+}
+.loading-overlay__bubble--3 {
+  width: 5px; height: 5px; top: 8px; left: 26px;
+  animation-delay: 1.2s;
+}
+
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50%       { transform: translateY(-14px) scale(0.8); opacity: 0.2; }
+}
+
+/* ── Message ─────────────────────────────────────────────── */
+.loading-overlay__message {
+  font-size: 1.6rem;
+  color: var(--charcoal);
+  font-style: italic;
+}
+
+/* ── Dots ────────────────────────────────────────────────── */
+.loading-overlay__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.loading-overlay__dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.loading-overlay__dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-overlay__dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%            { transform: scale(1);   opacity: 1; }
+}

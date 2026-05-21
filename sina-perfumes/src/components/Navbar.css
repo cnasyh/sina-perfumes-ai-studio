@@ -1,0 +1,169 @@
+/* src/components/Navbar.css */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.5rem 0;
+  transition: background var(--dur-med) var(--ease-luxury),
+              box-shadow var(--dur-med) var(--ease-luxury),
+              padding var(--dur-med) var(--ease-luxury);
+}
+
+.navbar--scrolled {
+  background: rgba(247, 243, 238, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 32px rgba(13, 11, 9, 0.08);
+  padding: 1rem 0;
+}
+
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Brand ───────────────────────────────────────────────── */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  font-family: var(--font-display);
+  letter-spacing: 0.15em;
+}
+
+.navbar__brand-sina {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.navbar__brand-sep {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.navbar__brand-sub {
+  font-size: 0.75rem;
+  font-weight: 300;
+  font-family: var(--font-sans);
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* ── Links ───────────────────────────────────────────────── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.navbar__link {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--charcoal);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--dur-fast);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width var(--dur-med) var(--ease-luxury);
+}
+
+.navbar__link:hover,
+.navbar__link--active { color: var(--gold); }
+
+.navbar__link:hover::after,
+.navbar__link--active::after { width: 100%; }
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.navbar__cta {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--cream);
+  background: var(--gold);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+}
+
+.navbar__cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ── Burger ──────────────────────────────────────────────── */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__burger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--charcoal);
+  transition: transform var(--dur-med) var(--ease-luxury),
+              opacity var(--dur-fast);
+  transform-origin: center;
+}
+
+.navbar__burger--open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.navbar__burger--open span:nth-child(2) { opacity: 0; }
+.navbar__burger--open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .navbar__burger { display: flex; }
+
+  .navbar__links {
+    position: fixed;
+    inset: 0;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--cream);
+    gap: 2rem;
+    transform: translateX(100%);
+    transition: transform var(--dur-slow) var(--ease-reveal);
+    pointer-events: none;
+  }
+
+  .navbar__links--open {
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .navbar__link { font-size: 1rem; }
+  .navbar__cta  { font-size: 0.8rem; }
+}
