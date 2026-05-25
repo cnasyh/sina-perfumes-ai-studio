@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/sina-perfumes-ai-studio/static/css/main.d91c2a65.css",
-    "main.js": "/sina-perfumes-ai-studio/static/js/main.a5e545f1.js",
+    "main.js": "/sina-perfumes-ai-studio/static/js/main.5625107a.js",
     "index.html": "/sina-perfumes-ai-studio/index.html",
     "main.d91c2a65.css.map": "/sina-perfumes-ai-studio/static/css/main.d91c2a65.css.map",
-    "main.a5e545f1.js.map": "/sina-perfumes-ai-studio/static/js/main.a5e545f1.js.map"
+    "main.5625107a.js.map": "/sina-perfumes-ai-studio/static/js/main.5625107a.js.map"
   },
   "entrypoints": [
     "static/css/main.d91c2a65.css",
-    "static/js/main.a5e545f1.js"
+    "static/js/main.5625107a.js"
   ]
 }
